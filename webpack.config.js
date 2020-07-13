@@ -5,8 +5,8 @@ module.exports = {
   entry: './src/vue-aplayer.vue',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'vue-aplayer.min.js',
-    library: 'VueAPlayer',
+    filename: 'diy-vue-aplayer.min.js',
+    library: 'DiyVueAPlayer',
     libraryTarget: 'umd',
     libraryExport: 'default',
     umdNamedDefine: true
