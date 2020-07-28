@@ -237,8 +237,10 @@
        * serverAddress
        */
 	    serverAddress: String,
-
-      // deprecated props
+      /**
+       * stationModel
+       */
+      stationModel: Boolean,
 
       /**
        * @deprecated since 1.1.2, use listMaxHeight instead
@@ -340,6 +342,7 @@
         internalRepeat: this.repeat,
         internalToken: this.token,
 		    internalServerAddress: this.serverAddress,
+        internalStationModel: this.stationModel,
         // for shuffling
         shuffledList: [],
       }
@@ -503,7 +506,12 @@
         }
       },
       async thenPlay () {
-        let src = await this.getMusicUrl(this.currentMusic.id)
+        let src = ''
+        if(this.stationModel){
+          src = await this.getMusicUrl(this.currentMusic.id)
+        }else{
+          src = this.currentMusic.src
+        }
         this.audio.src = src
         this.$nextTick(() => {
           this.play()
@@ -806,6 +814,10 @@
       music (music) {
         this.internalMusic = music
       },
+      list () {
+        console.log('监听到list变化')
+        this.shuffledList = this.getShuffledList()
+      },
       currentMusic: {
         handler (music) {
           // async
@@ -879,6 +891,9 @@
       },
 	    serverAddress (val) {
         this.internalServerAddress = val
+      },
+      stationModel (val) {
+        this.internalStationModel = val
       },
       repeat (val) {
         this.internalRepeat = val
