@@ -1,7 +1,7 @@
 {
   "name": "diy-vue-aplayer",
-  "version": "1.0.1",
-  "description": "my diy-vue-aplayer music player for Vue 2.x",
+  "version": "1.0.2",
+  "description": "优化配置项，区分站内和网络",
   "main": "dist/diy-vue-aplayer.min.js",
   "files": [
     "src",
